@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<h1>Mi Formulario de registro</h1>
+		<form action="/">
+			<label for="name"
+				>Nombre:
+				<input type="text" name="name" />
+			</label>
+			<label for="lastname"
+				>Apellido:
+				<input type="text" name="lastname" />
+			</label>
+			<label
+				>Email:
+
+				<input type="email" />
+			</label>
+			<label for="password"
+				>Contraseña:
+
+				<input type="password" name="password" />
+			</label>
+			<label for="date"
+				>Cumpleaños:
+
+				<input type="date" name="date" />
+			</label>
+			<div class="sex">
+				<label for="men"
+					>Hombre:
+
+					<input type="radio" name="men" />
+				</label>
+				<label for="woman"
+					>Mujer:
+
+					<input type="radio" name="woman" />
+				</label>
+				<label for="other"
+					>Otro:
+
+					<input type="radio" name="other" />
+				</label>
+			</div>
+			<label for="description" id="description"
+				>Una breve descripcion de ti:
+				<textarea name="description"></textarea>
+			</label>
+			<label for="language"
+				>Lenguaje Favorito:
+				<select name="language" id="language">
+					<option value="javascript">Javascript</option>
+					<option value="java">Java</option>
+					<option value="c++">C++</option>
+				</select>
+			</label>
+			<input type="submit" name="submit" id="submit" value="Enviar" />
+		</form>
+	</body>
+</html>

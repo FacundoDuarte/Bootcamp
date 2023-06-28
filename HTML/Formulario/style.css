@@ -1,0 +1,12 @@
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: self-start;
+}
+#description {
+	display: flex;
+	flex-direction: column;
+}
+label {
+	padding: 10px 0;
+}
