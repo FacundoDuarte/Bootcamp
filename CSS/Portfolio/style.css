@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100vh;
+    width: 100vw;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+}
+
+#main {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(180deg,
+            rgb(39 34 34)0%,
+            rgba(238, 174, 202, 1) 50%,
+            rgb(39 34 34) 100%);
+    background: rgb(0, 0, 0);
+    background: radial-gradient(circle, rgb(39 34 34) 0%, rgba(156, 103, 126, 1) 0%, rgb(39 34 34) 93%);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.first-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.information {
+    flex-grow: 1;
+}
+
+#image {
+    width: 40%;
+}
+
+#about {
+    width: 55%;
+    background-color: #e5dbe4;
+}
+
+#about h2 {
+    background-color: rgb(135, 134, 147);
+    color: white;
+    padding: 10px;
+}
+
+.about-information {
+    padding: 20px;
+}
+
+.about-information p {
+    padding: 10px;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.about-information a {
+    font-size: 20px;
+    padding: 10px;
+    color: black;
+}
+
+.second-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.second-section section {
+    width: 28%;
+    background-color: #F2EDF2;
+    display: flex;
+    flex-direction: column;
+}
+
+.technologies {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    gap: 10px;
+}
+
+.btn {
+    align-self: center;
+    margin-bottom: 20px;
+    padding: 5px;
+    background-color: #407D61;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    box-shadow: 3px 3px 23px 1px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 2px 4px 7px 1px rgba(0, 0, 0, 0.85);
+    -moz-box-shadow: 3px 3px 23px 1px rgba(0, 0, 0, 0.75);
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.technologies img {
+    width: 15%;
+}
+
+
+
+.second-section section h4 {
+    padding: 10px;
+    background-color: rgb(135, 134, 147);
+    color: white;
+    font-size: 20px;
+}
+
+.second-section p {
+    padding: 10px;
+
+}
+
+.second-section h2 {
+    background-color: rgb(135, 134, 147);
+    color: white;
+    padding: 10px;
+}
+
+.img-section {
+    width: 100%;
+}
+
+.img-me {
+    width: 100%;
+    border: 7px solid #bcbcbc;
+}
+
+#footer {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    gap: 5px;
+}
+
+.links-social__media {
+    color: black;
+}
+
+.social-media {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.img-social__media {
+    width: 20px;
+}
