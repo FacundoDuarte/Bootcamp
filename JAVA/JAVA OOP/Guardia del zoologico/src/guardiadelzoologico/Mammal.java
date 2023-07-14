@@ -13,6 +13,6 @@ public class Mammal {
 	
 
 	public String displayEnergy(){
-		return "La energia base es: " + this.energyLevel;
+		return "Energia: " + this.energyLevel;
 	}
 }
