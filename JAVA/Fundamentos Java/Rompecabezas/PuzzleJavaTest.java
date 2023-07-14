@@ -10,7 +10,7 @@ public class PuzzleJavaTest{
         listNames.add("Fujibayashi");
         listNames.add("Momochi");
         listNames.add("Ishikawa");
-        puzzle.numberAboveTen(list);
+        // System.out.println(puzzle.numberAboveTen(list));
         puzzle.nameRandom(listNames);
     }
     

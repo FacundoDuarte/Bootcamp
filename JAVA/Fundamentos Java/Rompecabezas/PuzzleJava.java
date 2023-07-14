@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Random;
 
 public class PuzzleJava {
-    public static void numberAboveTen(int[] list) {
+    public ArrayList<Integer> numberAboveTen(int[] list) {
         int sum = 0;
         ArrayList<Integer> numbersAboveTen = new ArrayList<Integer>();
         for (int i = 0; i < list.length - 1; i++) {
@@ -15,8 +15,7 @@ public class PuzzleJava {
             }
         }
         System.out.println("La suma es de: " + sum);
-        Integer[] numerosArray = numbersAboveTen.toArray(new Integer[0]);
-        System.out.println("Nuevo arreglo con elementos mayores a 10: "+Arrays.toString(numerosArray));
+        return numbersAboveTen;
     }
 
     public static void nameRandom(ArrayList<String>list){
@@ -26,8 +25,9 @@ public class PuzzleJava {
               if(list.get(i).length() > 5){
             namesLength.add(list.get(i));
           }
-          Collections.shuffle(list);
+          
       }
+      Collections.shuffle(list);
       String[] randomList = list.toArray(new String[0]);
        String[] namesMoreThanFive = namesLength.toArray(new String[0]);
       System.out.println("Arreglo random: "+Arrays.toString(randomList));
