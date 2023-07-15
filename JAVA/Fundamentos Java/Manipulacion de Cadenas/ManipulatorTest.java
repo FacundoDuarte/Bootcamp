@@ -2,6 +2,7 @@ import java.util.ArrayList;
 public class ManipulatorTest {
     public static void main(String[] args) {
         Manipulator manipulator = new Manipulator();
+        
         // Manipulacion trimAndConcat(String, String)
         System.out.println(manipulator.trimAndConcat("    Hola     ", "     Mundo    ")); // HolaMundo
 
@@ -29,6 +30,5 @@ public class ManipulatorTest {
             myArray.add(x);
         }
         System.out.println(myArray.indexOf(1));
-
     }
 }
