@@ -2,6 +2,10 @@ package guardiadelzoologico;
 
 public class Bat extends Mammal{
 	
+	public Bat() {
+		super.setEnergy(300);
+	}
+	
 	public String fly() {
 		super.setEnergy(super.getEnergy() - 50);
 		return "fffffssssshhhh " + super.displayEnergy();

@@ -6,7 +6,7 @@ public class BatTest {
 		// TODO Auto-generated method stub
 
 		Bat b = new Bat();
-		b.setEnergy(300);
+
 		//Ataque tres veces la ciudad
 		System.out.println(b.attackDown());
 		System.out.println(b.attackDown());
