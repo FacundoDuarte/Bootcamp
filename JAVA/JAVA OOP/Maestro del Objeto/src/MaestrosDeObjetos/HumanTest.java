@@ -10,8 +10,8 @@ public class HumanTest {
 		Samurai s = new Samurai();
 		Samurai s1 = new Samurai();
 		Samurai s2 = new Samurai();
-		
-		h.attack(); 
+
+		h.attack();
 		w.heal(h);
 		w.fireBall(h);
 		n.steal(h);
@@ -19,7 +19,5 @@ public class HumanTest {
 		s.deathBlow(h);
 		s.meditate();
 		s.howMany();
-
 	}
-
 }
