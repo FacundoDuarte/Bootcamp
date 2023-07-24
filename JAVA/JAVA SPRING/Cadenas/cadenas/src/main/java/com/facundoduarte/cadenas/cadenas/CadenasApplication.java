@@ -22,4 +22,5 @@ public class CadenasApplication {
 	public String random() { // 3
 		return "Spring boot is great! So easy to just respond with strings";
 	}
+
 }
