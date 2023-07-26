@@ -2,6 +2,9 @@ package com.facundoduarte.fecha.fecha;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import jakarta.servlet.http.HttpSession;
+
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import org.springframework.ui.Model;
@@ -23,11 +26,18 @@ public class HomeController {
         return "date";
     }
 
+    int contador = 0;
+
     @GetMapping("/time")
-    public String time(Model model) {
+    public String time(Model model, HttpSession session) {
+
+        session.setAttribute("count", contador++);
+        Integer count = (Integer) session.getAttribute("count");
+
         Date dateTime = new Date();
         SimpleDateFormat timeFormatted = new SimpleDateFormat("hh:mm a");
         model.addAttribute("timeFormatted", timeFormatted.format(dateTime));
+        model.addAttribute("count", count);
         return "time";
     }
 }
