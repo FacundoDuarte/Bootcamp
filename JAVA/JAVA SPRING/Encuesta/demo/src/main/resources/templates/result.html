@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>Resultados</h1>
+    <div class="results">
+        <p>Nombre: <span th:text="${name}"></span></p>
+        <p>Ubicacion del dojo: <span th:text="${location}"></span></p>
+        <p>Lenguaje favorito: <span th:text="${language}"></span></p>
+        <p>Comentarios: <span th:text="${comment}"></span></p>
+        <button><a href="/">Volver</a></button>
+    </div>
+</body>
+
+</html>
