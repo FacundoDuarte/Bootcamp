@@ -21,7 +21,7 @@ public class HomeController {
     @GetMapping("/date")
     public String date(Model model) {
         Date date = new Date();
-        SimpleDateFormat dateFormatted = new SimpleDateFormat("EEEE, dd 'of' MMMM 'of' yyyy");
+        SimpleDateFormat dateFormatted = new SimpleDateFormat("MMMM, dd, yyyy, hh:mm a");
         model.addAttribute("dateFormatted", dateFormatted.format(date));
         return "date";
     }
