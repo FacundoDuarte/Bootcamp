@@ -12,8 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 @Controller
 public class HomeController {
     int oro = 0;
@@ -30,7 +28,7 @@ public class HomeController {
         Date date = new Date();
         int goldFarm = randomNum(min, max);
         oro += goldFarm;
-        SimpleDateFormat dateFormatted = new SimpleDateFormat("MMMM dd yyyy hh:mm a ");
+        SimpleDateFormat dateFormatted = new SimpleDateFormat("MMMM dd yyyy hh:mm a");
         mensaje = "Has ganado " + goldFarm + " de oro en la" + place + "(" + dateFormatted.format(date) + ")";
         registro.add(mensaje);
         model.addAttribute("oro", oro);
@@ -51,26 +49,26 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/granja", method = RequestMethod.POST)
-    public String granja(RedirectAttributes redirectAttributes, Model model) {
+    public String granja(Model model) {
         winCondition(model, 10, 20, "granja");
         return "index";
     }
 
     @RequestMapping(value = "/cueva", method = RequestMethod.POST)
-    public String cueva(RedirectAttributes redirectAttributes, Model model) {
+    public String cueva(Model model) {
         winCondition(model, 5, 10, "cueva");
         return "index";
     }
 
     @RequestMapping(value = "/casa", method = RequestMethod.POST)
-    public String casa(RedirectAttributes redirectAttributes, Model model) {
+    public String casa(Model model) {
         winCondition(model, 2, 5, "casa");
         return "index";
     }
 
     @RequestMapping(value = "/casino", method = RequestMethod.POST)
-    public String casino(RedirectAttributes redirectAttributes, Model model) {
-        int winOrLose = random.nextInt(1 - 0 + 1) + 0;
+    public String casino(Model model) {
+        int winOrLose = randomNum(0, 1);
         if (winOrLose == 1) {
             loseCondition(model, 0, 50, "casino");
         } else {
