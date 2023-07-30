@@ -3,11 +3,9 @@ package com.facundoduarte.mvc.mvc.repositories;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
 import com.facundoduarte.mvc.mvc.models.BookModel;
 
-@Repository
 public interface BookRepository extends CrudRepository<BookModel, Long> {
     // Este método recupera todos los libros de la base de datos
     List<BookModel> findAll();

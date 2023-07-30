@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 th:text="${book.title}"></h1>
+    <p>Description: <span th:text="${book.description}"></span></p>
+    <p>Language: <span th:text="${book.Language}"></span></p>
+    <p>Number of pages: <span th:text="${book.numberOfPages}"></span></p>
+    <a th:href="@{/books/${book.id}/edit}">Edit Book</a>
+    <form action="/books/${book.id}" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete">
+    </form>
+</body>
+
+</html>

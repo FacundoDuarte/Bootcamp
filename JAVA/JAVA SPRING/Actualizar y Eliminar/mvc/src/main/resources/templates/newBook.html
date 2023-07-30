@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/books" method="post" th:object="${book}">
+        <p>
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" th:field="*{title}" />
+            <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+        </p>
+        <p>
+            <label for="description">Description</label>
+            <textarea id="description" name="description" th:field="*{description}"></textarea>
+            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+        </p>
+        <p>
+            <label for="language">Language</label>
+            <input type="text" id="language" name="language" th:field="*{language}" />
+            <span th:if="${#fields.hasErrors('language')}" th:errors="*{language}"></span>
+        </p>
+        <p>
+            <label for="numberOfPages">Pages</label>
+            <input type="number" id="numberOfPages" name="numberOfPages" th:field="*{numberOfPages}" />
+            <span th:if="${#fields.hasErrors('numberOfPages')}" th:errors="*{numberOfPages}"></span>
+        </p>
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+
+</html>
