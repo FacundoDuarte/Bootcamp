@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <table class="tableLanguages" id="">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Creador</th>
+                <th>Version</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="language: ${languages}">
+                <th><a th:href="@{/languages/{id}(id=${language.id})}" th:text="${language.name}"></a></th>
+                <th th:text="${language.creator}"></th>
+                <th th:text="${language.version}"></th>
+                <td>
+                    <div class="acciones">
+                        <a th:href="@{/languages/{id}/edit(id=${language.id})}">Editar</a>
+                        <form th:action="@{/languages/{id}(id=${language.id})}" method="post">
+                            <input type="hidden" name="_method" value="delete">
+                            <input type="submit" value="Eliminar" class="delete">
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <form class="formLanguage" action="/languages" method="post" th:object="${language}">
+        <p>
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" th:field="*{name}" />
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+        </p>
+        <p>
+            <label for="creator">Creador</label>
+            <input type="text" id="creator" name="creator" th:field="*{creator}" />
+            <span th:if="${#fields.hasErrors('creator')}" th:errors="*{creator}"></span>
+        </p>
+        <p>
+            <label for="version">Version</label>
+            <input type="text" id="version" name="version" th:field="*{version}" />
+            <span th:if="${#fields.hasErrors('version')}" th:errors="*{version}"></span>
+        </p>
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+
+</html>

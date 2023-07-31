@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/show.css">
+</head>
+
+<body>
+    <a href="/languages">Dashboard</a>
+    <p th:text="${language.name}"></p>
+    <p th:text="${language.creator}"></p>
+    <p th:text="${language.version}"></p>
+    <div class="acciones">
+        <a th:href="@{/languages/{id}/edit(id=${language.id})}">Editar</a>
+        <form th:action="@{/languages/{id}(id=${language.id})}" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="Eliminar" class="delete">
+        </form>
+    </div>
+</body>
+
+</html>

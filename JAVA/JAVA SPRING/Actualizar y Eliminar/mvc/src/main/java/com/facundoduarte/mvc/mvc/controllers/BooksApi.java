@@ -43,7 +43,7 @@ public class BooksApi {
     public BookModel update(@PathVariable("id") Long id, @RequestParam(value = "title") String title,
             @RequestParam(value = "description") String desc, @RequestParam(value = "language") String lang,
             @RequestParam(value = "pages") Integer numOfPages) {
-        BookModel book = bookService.updateBook(id);
+        BookModel book = bookService.updateBook(bookService.findBook(id));
         if (book != null) {
             book.setTitle(title);
             book.setDescription(desc);

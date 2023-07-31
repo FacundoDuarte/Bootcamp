@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="acciones">
+        <a th:href="@{/languages}">Dashboard</a>
+        <form th:action="@{/languages/{id}(id=${language.id})}" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="Eliminar" class="delete">
+        </form>
+        </form>
+    </div>
+    <h1>Edit Language</h1>
+    <form th:action="@{/languages/{id}(id=${language.id})}" method="post" th:object="${language}">
+        <input type="hidden" name="_method" value="put">
+        <p>
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" th:field="*{name}">
+        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+        </p>
+        <p>
+            <label for="creator">Creador</label>
+            <input type="text" id="creator" name="creator" th:field="*{creator}">
+        <p th:if="${#fields.hasErrors('creator')}" th:errors="*{creator}"></p>
+        </p>
+        <p>
+            <label for="version">Version</label>
+            <input type="text" id="version" name="version" th:field="*{version}">
+        <p th:if="${#fields.hasErrors('version')}" th:errors="*{version}"></p>
+        </p>
+        <input type="hidden" th:field="*{id}">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.tableLanguages {
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: 14px;
+    border: 1px solid black;
+    text-align: center;
+    width: 100%;
+}
+
+thead {
+    background-color: #ccc;
+}
+
+th {
+    padding: 15px;
+}
+
+td {
+    padding: 10px;
+}
+
+.formLanguage {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 50%;
+    align-items: flex-start;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.formLanguage p {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.formLanguage input[type="submit"] {
+    align-self: center;
+}
+
+.formLanguage input[type="text"] {
+    padding: 5px;
+    font-size: 14px;
+}
+
+.acciones {
+    font-size: 15px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.delete {
+    border: none;
+    text-decoration: underline;
+    color: blue;
+    font-size: 15px;
+    background: none;
+}

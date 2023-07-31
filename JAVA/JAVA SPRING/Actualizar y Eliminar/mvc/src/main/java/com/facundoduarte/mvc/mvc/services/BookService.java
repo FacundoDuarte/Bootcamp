@@ -37,10 +37,15 @@ public class BookService {
         }
     }
 
-    public BookModel updateBook(Long id) {
-        Optional<BookModel> optionalBook = bookRepository.findById(id);
+    public BookModel updateBook(BookModel b) {
+        Optional<BookModel> optionalBook = bookRepository.findById(b.getId());
         if (optionalBook.isPresent()) {
-            return optionalBook.get();
+            b.setTitle(b.getTitle());
+            b.setDescription(b.getDescription());
+            b.setLanguage(b.getLanguage());
+            b.setNumberOfPages(b.getNumberOfPages());
+            bookRepository.save(b);
+            return b;
         } else {
             return null;
         }
