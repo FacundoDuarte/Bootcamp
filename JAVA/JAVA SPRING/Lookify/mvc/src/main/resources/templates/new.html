@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="song.html">
+</head>
+
+<body>
+    <a th:href="@{/dashboard}">Dashboard</a>
+    <form class="formSong" action="/songs/new" method="post" th:object="${song}">
+        <p>
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" th:field="*{name}" />
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+        </p>
+        <p>
+            <label for="artist">Artista</label>
+            <input type="text" id="artist" name="artist" th:field="*{artist}" />
+            <span th:if="${#fields.hasErrors('artist')}" th:errors="*{artist}"></span>
+        </p>
+        <p>
+            <label for="rating">Calificacion</label>
+            <input type="number" id="rating" name="rating" th:field="*{rating}" />
+            <span th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}"></span>
+        </p>
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+
+</html>

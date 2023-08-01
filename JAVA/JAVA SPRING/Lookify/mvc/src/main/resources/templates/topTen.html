@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/topTen.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1>Top 10 Canciones</h1>
+        <a th:href="@{/dashboard}">Dashboard</a>
+    </div>
+    <div class="center-content">
+        <table>
+            <thead>
+                <tr>
+                    <th>Calificacion</th>
+                    <th>Nombre</th>
+                    <th>Artista</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="song : ${songs}">
+                    <td th:text="${song.rating}"></td>
+                    <td th:text="${song.name}"></td>
+                    <td th:text="${song.artist}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

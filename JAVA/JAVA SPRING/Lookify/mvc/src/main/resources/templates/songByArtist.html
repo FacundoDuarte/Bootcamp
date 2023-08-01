@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <header class="headerSong">
+        <form th:action="@{/search/}" th:method="post">
+            <label for="artist">Nombre del artista:</label>
+            <input type="text" id="artist" class="search" name="artist" required>
+            <button type="submit" class="btnSearch">Buscar</button>
+        </form>
+        <a th:href="@{/dashboard}">Dashboard</a>
+    </header>
+    <table class="tableLanguages" id="">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Calificacion</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="song: ${songs}">
+                <th><a th:href="@{/songs/{id}(id=${song.id})}" th:text="${song.name}"></a></th>
+                <th th:text="${song.rating}"></th>
+                <td>
+                    <div class="acciones">
+                        <form th:action="@{/dashboard/{id}(id=${song.id})}" method="post">
+                            <input type="hidden" name="_method" value="delete">
+                            <input type="submit" value="Eliminar" class="delete">
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
