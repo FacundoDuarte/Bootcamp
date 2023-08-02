@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div class="containerInformation">
+        <h1 th:text="${person.firstName + ' ' + person.lastName}"></h1>
+        <div class="information">
+            <p>Licencia: <span th:text="${license.number}"></span></p>
+            <p>Estado: <span th:text="${license.state}"></span></p>
+            <p>Fecha de caducidad: <span th:text="${#dates.format(license.expirationDate, 'yyyy-MM-dd')}"></span></p>
+        </div>
+    </div>
+
+</body>
+
+</html>

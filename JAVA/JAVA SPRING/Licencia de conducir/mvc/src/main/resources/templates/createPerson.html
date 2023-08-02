@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div class="containerPerson">
+        <h1>Nueva persona</h1>
+        <form class="formPerson" action="/persons/new" method="post" th:object="${person}">
+            <label for="firstName">Nombre
+                <input type="text" id="firstName" name="firstName" th:field="*{firstName}" />
+                <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+            </label>
+
+            <label for="lastName">Apellido
+                <input type="text" id="lastName" name="lastName" th:field="*{lastName}" />
+                <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+            </label>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+</body>
+
+</html>

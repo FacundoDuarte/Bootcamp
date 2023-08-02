@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    height: 100vh;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.containerInformation,
+.containerPerson,
+.containerLicense {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 80px;
+    justify-content: center;
+    height: 100%;
+}
+
+.containerPerson {
+    gap: 60px;
+}
+
+.containerPerson form,
+.containerLicense form {
+    display: flex;
+    flex-direction: column;
+    height: 30%;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+
+.containerPerson form input {
+    padding: 5px 10px;
+}
+
+.containerLicense form {
+    align-items: flex-start;
+    width: 45%;
+}
+
+.containerLicense form input[type="text"],
+input[type="date"],
+select {
+    width: 50%;
+    padding: 5px 10px;
+}
+
+.containerLicense input[type="submit"] {
+    padding: 5px 10px;
+    align-self: flex-end;
+}
+
+.containerLicense form label {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.containerInformation h1 {
+    font-size: 50px;
+}
+
+.information {
+    font-size: 25px;
+}

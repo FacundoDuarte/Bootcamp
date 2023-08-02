@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div class="containerLicense">
+        <h1>Nueva licencia</h1>
+        <form class="formLicense" action="/licenses/new" method="post" th:object="${license}">
+            <label for="person">Persona:
+                <select id="person" name="person.id" th:field="*{person}">
+                    <option value="" selected>Selecciona una persona</option>
+                    <option th:each="person : ${persons}" th:value="${person.id}" th:text="${person.firstName}">
+                    </option>
+                    <p th:if="${#fields.hasErrors('person')}" th:errors="*{person}"></p>
+                </select>
+            </label>
+
+            <label for="state">Ciudad
+                <input type="text" id="state" name="state" th:field="*{state}" />
+                <span th:if="${#fields.hasErrors('state')}" th:errors="*{state}"></span>
+            </label>
+            <label for="expirationDate">Fecha de caducidad:
+                <input type="date" id="expirationDate" name="expirationDate" th:field="*{expirationDate}" />
+                <span th:if="${#fields.hasErrors('expirationDate')}" th:errors="*{expirationDate}"></span>
+            </label>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+</body>
+
+</html>

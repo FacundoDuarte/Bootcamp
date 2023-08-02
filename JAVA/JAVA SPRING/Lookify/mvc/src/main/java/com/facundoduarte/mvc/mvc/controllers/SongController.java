@@ -61,7 +61,7 @@ public class SongController {
     }
 
     @PostMapping("/search/")
-    public String findSongByArtist(@RequestParam("artist") String artista, Model model) {
+    public String findSongByArtist(@RequestParam(value = "artist") String artista, Model model) {
         List<Song> songByArtist = songServices.songByArtist(artista);
         model.addAttribute("songs", songByArtist);
         return "songByArtist";
