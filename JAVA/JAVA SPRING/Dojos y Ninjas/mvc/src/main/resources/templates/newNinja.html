@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/newNinja.css">
+</head>
+
+<body>
+    <h1>Nuevo ninja</h1>
+    <form class="formNinja" action="/ninjas/new" method="post" th:object="${ninja}">
+        <label for="dojo">Dojo:
+            <select id="dojo" name="dojo.id" th:field="*{dojo}">
+                <option value="" selected>Selecciona un Dojo</option>
+                <option th:each="dojo : ${dojos}" th:value="${dojo.id}" th:text="${dojo.name}">
+                </option>
+            </select>
+            <span th:if="${#fields.hasErrors('dojo')}" th:errors="*{dojo}"></span>
+        </label>
+        <label for="firstName">Nombre:
+            <input type="text" id="firstName" name="firstName" th:field="*{firstName}" />
+            <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+        </label>
+        <label for="lastName">Apellido:
+            <input type="text" id="lastName" name="lastName" th:field="*{lastName}" />
+            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+        </label>
+        <label for="age">Edad:
+            <input type="number" id="age" name="age" th:field="*{age}" />
+            <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+        </label>
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+
+</html>

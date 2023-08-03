@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/newDojo.css">
+</head>
+
+<body>
+
+    <h1>Nuevo Dojo</h1>
+    <form class="formDojo" action="/dojos/new" method="post" th:object="${dojo}">
+
+        <label for="name">Nombre</label>
+        <input type="text" id="name" name="name" th:field="*{name}"
+            th:class="${#fields.hasErrors('name')} ? 'error' : ''" />
+        <div class="error">
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            <input type="submit" value="Submit" />
+        </div>
+    </form>
+
+</body>
+
+</html>
