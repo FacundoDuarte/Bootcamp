@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/show.css">
+</head>
+
+<body>
+    <h1 th:text="${category.name}"></h1>
+    <div class="container">
+        <div class="right">
+            <form th:action="@{/categories/{id}(id=${category.id})}" th:object="${product}" method="post">
+                <label for="product">Agregar producto:
+                    <select id="product" name="id" required>
+                        <option value="" selected>Seleccione una opción</option>
+                        <option th:each="product : ${products}" th:value="${product.id}" th:text="${product.name}">
+                        </option>
+                    </select>
+                </label>
+                <input type="submit" value="Agregar Producto" />
+            </form>
+        </div>
+        <div class="left">
+            <h2>Productos</h2>
+            <ul>
+                <li th:each="product : ${category.products}" th:text="${product.name}"></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
