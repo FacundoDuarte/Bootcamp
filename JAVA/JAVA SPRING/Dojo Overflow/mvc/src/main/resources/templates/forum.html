@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/forum.css">
+</head>
+
+<body>
+    <h1 th:text="${question.question}"></h1>
+    <div class="container">
+        <div class="tags_container">
+            <ul th:each="tag : ${tags}">
+                <h2 class="title_tag">Etiquetas:</h2>
+                <ul th:each="tagSplitted : ${#strings.toLowerCase(tag.subject).split(',')}">
+                    <li class="tags" th:text="${tagSplitted}"></li>
+                </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="showInfo">
+            <div class="answers">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Respuestas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="answer : ${question.answers}">
+                            <td th:text="${answer.questionAnswer}">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="infoForm">
+                <h2 class="form_title">Agregar respuesta:</h2>
+                <form class="form" th:action="@{/questions/{questionId}(questionId=${question.id})}" method="post">
+
+                    <textarea rows="10" cols="30" name="answerText" placeholder="Agrega tu respuesta"
+                        required></textarea>
+                    <button type="submit">Enviar Respuesta</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

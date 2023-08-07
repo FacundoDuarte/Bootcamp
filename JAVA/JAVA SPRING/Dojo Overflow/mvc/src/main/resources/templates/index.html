@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+    <div class="container">
+        <table class="" id="">
+            <thead>
+                <tr>
+                    <th>Pregunta</th>
+                    <th>Etiquetas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="question : ${questions}">
+                    <td><a th:href="@{/questions/{id}(id=${question.id})}"><span
+                                th:text="${question.question}"></span></a>
+                    </td>
+                    <td th:each="tag : ${question.tags}">
+                        <span th:text="${#strings.toLowerCase(tag.subject)}"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>
