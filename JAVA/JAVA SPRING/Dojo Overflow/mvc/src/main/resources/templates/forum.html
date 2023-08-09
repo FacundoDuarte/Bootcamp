@@ -9,8 +9,12 @@
 </head>
 
 <body>
-    <h1 th:text="${question.question}"></h1>
+
     <div class="container">
+        <div class="text_container">
+            <h1 th:text="${question.question}"></h1>
+            <a th:href="@{/questions}">Volver</a>
+        </div>
         <div class="tags_container">
             <ul th:each="tag : ${tags}">
                 <h2 class="title_tag">Etiquetas:</h2>

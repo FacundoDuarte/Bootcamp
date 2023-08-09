@@ -10,7 +10,10 @@
 
 <body>
     <div class="container">
-        <h1>Cual es tu pregunta?</h1>
+        <div class="text_container">
+            <h1>Cual es tu pregunta?</h1>
+            <a th:href="@{/questions}">Volver</a>
+        </div>
         <form th:action="@{/questions/new}" method="post" th:object="${questionTag}">
             <label for="question">Pregunta:</label>
             <textarea name="question" id="" cols="30" rows="5" th:field="*{question.question}" required></textarea>
