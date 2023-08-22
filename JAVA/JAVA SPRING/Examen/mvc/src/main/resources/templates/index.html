@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="forms">
+            <form class="form" th:action="@{/signin}" th:object="${user}" method="POST">
+                <h2>Registrarse</h2>
+                <div class="flex">
+                    <label for="firstName">
+                        <input th:field="*{firstName}" placeholder="Nombre" type="text" class="input">
+                        <p class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+                    </label>
+
+                    <label for="lastName">
+                        <input th:field="*{lastName}" placeholder="Apellido" type="text" class="input">
+                        <p class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+                    </label>
+
+                </div>
+
+                <label for="email">
+                    <input type="email" placeholder="Email" name="email" class="input" th:field="*{email}" />
+                    <p class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                    <p class="error" th:text="${error}"></p>
+                </label>
+
+                <label for="password">
+                    <input type="password" placeholder="Contraseña" name="password" class="input"
+                        th:field="*{password}" />
+                </label>
+
+                <label for="passwordConfirmation">
+                    <input type="password" placeholder="Confirmar contarseña" name="passwordConfirmation" class="input"
+                        th:field="*{passwordConfirmation}" />
+                    <p class="error" th:if="${#fields.hasErrors('passwordConfirmation')}"
+                        th:errors="*{passwordConfirmation}">
+                    </p>
+                    <p class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                </label>
+
+
+                <button class="submit">Submit</button>
+            </form>
+        </div>
+        <div class="form_login">
+            <form class="login_form" th:action="@{/login}" th:object="${user}" method="post">
+                <h2>Iniciar sesion</h2>
+
+                <label for="email">
+                    <input type="email" placeholder="Email" name="email" class="input" th:field="*{email}" />
+                </label>
+
+                <label for="password">
+                    <input type="password" placeholder="Contraseña" name="password" class="input"
+                        th:field="*{password}" />
+                    <p th:text="${login_error}" class="error"></p>
+                </label>
+
+                <input type="submit" class="submit" value="Ingresar">
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>

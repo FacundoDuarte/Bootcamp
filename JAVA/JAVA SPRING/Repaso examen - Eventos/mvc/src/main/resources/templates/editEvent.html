@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/editEvent.css">
+</head>
+
+<body>
+    <h1 th:text="${event.name}"></h1>
+    <div class="container">
+        <form class="form" th:action="@{/event/{eventId}/update(eventId=${event.id})}" th:object="${event}"
+            method="post">
+            <label for="name">Nombre:</label>
+            <input type="text" name="name" th:value="${event.getName()}">
+            <label for="eventDate">Fecha:</label>
+            <input type="date" name="eventDate" th:value="${event.getEventDate()}">
+            <label for="location" class="location">Locacion:
+                <div class="flex">
+                    <input type="text" name="location" th:value="${event.location}" />
+                    <select id="state" name="state.id">
+                        <option th:value="${event.getState().getId()}" th:text="${event.getState().getState()}"
+                            selected>
+                        </option>
+                        <option th:each="state : ${states}" th:value="${state.id}" th:text="${state.getState()}">
+                        </option>
+                    </select>
+                </div>
+            </label>
+            <input type="submit">
+        </form>
+    </div>
+</body>
+
+</html>

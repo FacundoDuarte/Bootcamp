@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/ideas.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 th:text="'Bienvenido '+ ${user.name}"></h1>
+
+        <div class="information">
+            <h2>Ideas</h2>
+            <a th:href="@{/logout}">Cerrar sesion</a>
+        </div>
+
+        <table class="" id="">
+            <thead>
+                <tr>
+                    <th>Idea</th>
+                    <th>Creada por:</th>
+                    <th>Likes</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="idea : ${ideasWithLikesAndCurrentUser}">
+                    <td><a th:href="@{/ideas/{id}(id=${idea.id})}"><span th:text="${idea.textIdea}"></span></a></td>
+                    <td th:text="${idea.user.getName()}"></td>
+                    <td th:text="${idea.likes.size()}"></td>
+                    <td>
+                        <form th:if="${idea.likedByCurrentUser}" th:action="@{/ideas/{id}/dislike(id=${idea.id})}"
+                            method="post">
+                            <button type="submit" class="dislike">Dislike</button>
+                        </form>
+                        <form th:unless="${idea.likedByCurrentUser}" th:action="@{/ideas/{id}/like(id=${idea.id})}"
+                            method="post">
+                            <button type="submit" class="like">Like</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/ideas/new}" class="createIdeas">Crear Idea</a>
+    </div>
+</body>
+
+</html>

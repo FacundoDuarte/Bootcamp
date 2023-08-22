@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <header class="header_information">
+            <h1 th:text="'Bienvenido, ' + ${user.firstName}"></h1>
+            <a th:href="@{/logout}">Cerrar Sesion</a>
+        </header>
+        <main>
+            <section class="all_projects">
+                <div class="projects__to-join">
+
+
+                    <div class="all_projects-information">
+                        <h2>Todos los proyectos</h2>
+                        <a th:href="@{/projects/new}">+ Agregar proyecto</a>
+                    </div>
+                    <table class="team_tables">
+                        <thead>
+                            <tr>
+                                <th>Proyecto</th>
+                                <th>Lider</th>
+                                <th>Fecha de finalizacion</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="project : ${projects_join}">
+                                <td><a th:href="@{/project/{id}(id=${project.id})}" th:text="${project.title}"></a></td>
+                                <td th:text="${project.getLeader().getFirstName()}"></td>
+                                <td
+                                    th:text="${#strings.capitalize(#temporals.format(project.getFinishDate(), 'MMM d'))}">
+                                </td>
+                                <td>
+                                    <form th:if="${!project.getLeader().equals(user) and !project.joinedTeam}"
+                                        th:action="@{/project/{projectId}/join(projectId=${project.id})}" method="post">
+                                        <button type="submit" class="join">Unirse al equipo</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="project_lead-or-part">
+                    <h2>Todos tus proyectos</h2>
+                    <table class="leader_table">
+                        <thead>
+                            <tr>
+                                <th>Proyecto</th>
+                                <th>Lider</th>
+                                <th>Fecha de finalizacion</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="project : ${projects_leader}">
+                                <td><a th:href="@{/project/{projectId}(projectId=${project.id})}"
+                                        th:text="${project.title}"></a></td>
+                                <td th:text="${project.getLeader().getFirstName()}"></td>
+                                <td
+                                    th:text="${#strings.capitalize(#temporals.format(project.getFinishDate(), 'MMM d'))}">
+                                </td>
+                                <td>
+                                    <a th:if="${project.getLeader().equals(user)}"
+                                        th:href="@{/projects/{projectId}/edit(projectId=${project.id})}">Editar</a>
+                                    <form th:if="${!project.getLeader().equals(user)}"
+                                        th:action="@{/project/{projectId}/leave(projectId=${project.id})}"
+                                        method="post">
+                                        <button type="submit" class="join">Salir del equipo</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

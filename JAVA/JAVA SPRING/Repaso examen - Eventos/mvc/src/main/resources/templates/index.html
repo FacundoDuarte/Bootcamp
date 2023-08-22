@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="information">
+            <h1 th:text="'Bienvenido '+ ${user.firstName} + ' ' + ${user.lastName}"></h1>
+            <a th:href="@{/logout}">Cerrar sesion</a>
+        </div>
+        <h2>Eventos en tu estado</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>Locacion</th>
+                    <th>Estado</th>
+                    <th>Anfitrion</th>
+                    <th>Accion / estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="event : ${eventsByState}">
+                    <td><a th:href="@{/event/{id}(id=${event.id})}" th:text="${event.name}"></a></td>
+                    <td th:text="${event.eventDate}"></td>
+                    <td th:text="${event.location}"></td>
+                    <td th:text="${event.getState().getState()}"></td>
+                    <td th:text="${event.getHost().getFirstName()}"></td>
+                    <td>
+                        <form th:if="${event.getHost().equals(user)}" th:action="@{/event/{id}/join(id=${event.id})}"
+                            method="post">
+                            <a th:href="@{/event/{id}/update(id=${event.id})}" class="edit">Editar</a>
+                            <button type="submit" class="delete">Eliminar</button>
+                        </form>
+                        <form class="cancel_form" th:if="${!event.getHost().equals(user) and event.joinedByCurrentUser}"
+                            th:action="@{/event/{id}/cancel(id=${event.id})}" method="post">
+                            <p>Unido</p>
+                            <button type="submit" class="cancel">Cancelar</button>
+                        </form>
+                        <form th:if="${!event.getHost().equals(user) and !event.joinedByCurrentUser}"
+                            th:action="@{/event/{id}/join(id=${event.id})}" method="post">
+                            <button type="submit" class="join">Unirse</button>
+                        </form>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>Locacion</th>
+                    <th>Estado</th>
+                    <th>Anfitrion</th>
+                    <th>Accion / estado</th>
+                </tr>
+            </thead>
+            <h2>Eventos en otros estados</h2>
+            <tbody>
+                <tr th:each="event : ${events}">
+                    <td><a th:href="@{/event/{id}(id=${event.id})}" th:text="${event.name}"></a></td>
+                    <td th:text="${event.eventDate}"></td>
+                    <td th:text="${event.location}"></td>
+                    <td th:text="${event.getState().getState()}"></td>
+                    <td th:text="${event.getHost().getFirstName()}"></td>
+                    <td>
+                        <form th:if="${event.getHost().equals(user)}" th:action="@{/event/{id}/join(id=${event.id})}"
+                            method="post">
+                            <a th:href="@{/event/{id}/update(id=${event.id})}" class="edit">Editar</a>
+                            <button type="submit" class="delete">Eliminar</button>
+                        </form>
+                        <form class="cancel_form" th:if="${!event.getHost().equals(user) and event.joinedByCurrentUser}"
+                            th:action="@{/event/{id}/cancel(id=${event.id})}" method="post">
+                            <p>Unido</p>
+                            <button type="submit" class="cancel">Cancelar</button>
+                        </form>
+                        <form th:if="${!event.getHost().equals(user) and !event.joinedByCurrentUser}"
+                            th:action="@{/event/{id}/join(id=${event.id})}" method="post">
+                            <button type="submit" class="join">Unirse</button>
+                        </form>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Crear un evento</h2>
+        <form class="form" th:action="@{/index/createEvent}" th:object="${event}" method="post">
+            <label for="name">Nombre: </label>
+            <input type="text" name="name">
+            <label for="eventDate">Fecha:</label>
+            <input type="date" name="eventDate">
+            <label for="location">Locacion:
+                <div class="flex">
+                    <input type="text" name="location" />
+                    <select id="state" name="state.id">
+                        <option value="" selected>Selecciona un estado</option>
+                        <option th:each="state : ${states}" th:value="${state.id}" th:text="${state.state}">
+                        </option>
+                    </select>
+                </div>
+            </label>
+            <input type="submit">
+        </form>
+    </div>
+</body>
+
+</html>

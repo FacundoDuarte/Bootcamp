@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+h2 {
+    text-align: center;
+    margin: 10px;
+}
+
+
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 100px;
+}
+
+.form,
+.login_form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 500px;
+    background-color: #fff;
+    box-shadow: 3px 3px 13px 0px rgba(0, 0, 0, .7);
+    padding: 30px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.flex {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.form label,
+.login_form label {
+    font-size: 15px;
+    width: 100%;
+}
+
+.form label .input,
+.login_form label .input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+    outline: none;
+}
+
+.submit {
+    outline: none;
+    background-color: rgb(59, 145, 33);
+    padding: 10px 30px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    border: 1px solid rgb(59, 145, 33);
+    transition: all .5s ease;
+    align-self: flex-end;
+}
+
+.submit:hover {
+    background-color: #fff;
+    cursor: pointer;
+    border: 1px solid rgb(59, 145, 33);
+    color: rgb(59, 145, 33);
+}
+
+.error {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.form label .input.error-input,
+.login_form label .input.error-input {
+    border: 1px solid red;
+}

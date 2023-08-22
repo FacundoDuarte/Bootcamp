@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/task.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header_information">
+            <div class="information_project">
+                <h1 th:text="'Proyecto: '+ ${project.title}"></h1>
+                <p th:text="'Lider de proyecto: ' + ${project.getLeader().getFirstName}"></p>
+            </div>
+            <a class="dashboard-link" th:href="@{/dashboard}">Volver al dashboard</a>
+        </header>
+        <section class="add_task">
+            <form class="task-form" th:action="@{/projects/{projectId}/tasks(projectId=${project.id})}"
+                th:object="${task}" method="post">
+                <label for="textTask">Agregar una tarea para el equipo
+                    <textarea class="task-input" name="textTask" id="" cols="30" rows="10"
+                        th:field="*{textTask}"></textarea>
+                </label>
+                <p class="error-message" th:if="${#fields.hasErrors('textTask')}" th:errors="*{textTask}"></p>
+                <input class="submit-button" type="submit" value="Agregar tarea">
+            </form>
+        </section>
+        <section class="show_tasks">
+            <div class="task" th:each="task : ${tasks}">
+                <h3 th:text="'Agregado por: ' + ${task.getTaskCreator().getFirstName()} + 
+                ' a las ' + ${#dates.format(task.getCreatedAt(), 'h:mm a MMMM d')}"></h3>
+                <p class="task-text" th:text="${task.textTask}"></p>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

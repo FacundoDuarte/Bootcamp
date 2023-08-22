@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/newProject.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Edita tu proyecto!</h1>
+        <form th:action="@{/projects/{id}/edit(id=${project.id})}" th:object="${project}" method="post">
+            <label for="title">Titulo
+                <input type="text" name="title" th:field="*{title}">
+            </label>
+            <p class="error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
+
+            <label for="description">Descripcion
+                <textarea name="description" id="description" cols="30" rows="10" th:field="*{description}"></textarea>
+            </label>
+            <p class="error" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
+            <label for="finishDate">Fecha de finalizacion
+                <input type="date" name="finishDate" id="finishDate" th:field="*{finishDate}">
+            </label>
+            <p class="error" th:if="${#fields.hasErrors('finishDate')}" th:errors="*{finishDate}"></p>
+            <div class="buttons">
+                <a th:href="@{/dashboard}">Cancelar</a>
+                <input type="submit" value="Actualizar">
+            </div>
+
+        </form>
+    </div>
+</body>
+
+</html>

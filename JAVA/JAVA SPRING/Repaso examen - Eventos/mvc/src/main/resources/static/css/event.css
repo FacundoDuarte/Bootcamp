@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+
+}
+
+.container {
+    display: flex;
+    padding: 0 30px;
+    justify-content: space-between;
+}
+
+.information_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+
+}
+
+h1 {
+    text-align: left;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    width: 30%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    padding: 8px;
+    text-align: center;
+}
+
+td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.event_information p {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.message_wall {
+    padding: 10px;
+    border: 1px solid black;
+    height: 280px;
+    overflow: auto;
+    width: 550px;
+}
+
+.message_wall p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.right h2 {
+    margin-bottom: 10px;
+}
+
+.right form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.right form input[type="text"] {
+    padding: 10px;
+}
+
+.right form input[type="submit"] {
+    padding: 10px;
+    align-self: flex-end;
+}
+
+.information_header a {
+    color: blue;
+}

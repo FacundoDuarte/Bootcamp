@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/showProject.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <header class="header_information">
+            <h1>Detalles del proyecto</h1>
+            <a th:href="@{/dashboard}">Vovler al dashboard</a>
+        </header>
+        <main>
+            <div class="main_content">
+                <p>Proyecto: <span th:text="${project.title}"></span></p>
+                <p>Descripcion: <span th:text="${project.description}"></span></p>
+                <p>Fecha de finalización: <span th:text="${#temporals.format(project.finishDate, 'dd-MM-yyyy')}"></span>
+                </p>
+            </div>
+            <a th:href="@{/projects/{projectId}/tasks(projectId=${project.id})}">Ver tareas</a>
+        </main>
+    </div>
+</body>
+
+</html>

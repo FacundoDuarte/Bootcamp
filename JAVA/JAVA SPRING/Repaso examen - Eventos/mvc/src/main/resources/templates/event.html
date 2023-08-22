@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/event.css">
+</head>
+
+<body>
+    <div class="information_header">
+        <h1 th:text="${event.name}"></h1>
+        <a href="/index">Volver</a>
+    </div>
+    <div class="container">
+        <div class="left">
+            <div class="event_information">
+                <p>Anfitrion: <span th:text="${event.getHost().getFirstName()}"> </span></p>
+                <p>Fecha: <span th:text="${event.getEventDate()}"></span></p>
+                <p>Direccion: <span th:text=" ${event.getLocation()} +' , '+ ${event.getState().getState()}"></span></p>
+                <p>Personas que iran al evento: <span th:text="${event.getGuests().size()}"></span></p>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Ubicaion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="guest : ${event.getGuests()}">
+                        <td th:text="${guest.getFirstName()}"></td>
+                        <td th:text="${guest.getLocation()}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="right">
+            <h2>Muro de mensajes</h2>
+            <div class="message_wall">
+                <div>
+                    <span th:each="message : ${event.getMessages()}">
+                        <p th:text="${message.getUser().getFirstName()} + ' : ' +${message.msg}"></p>
+                        <p>-----------------------</p>
+                    </span>
+                </div>
+            </div>
+            <form th:action="@{/event/{eventId}/new-message(eventId=${event.id})}" th:object="${message}" method="post">
+                <label for="message">Agregar comentario:</label>
+                <input name="msg" type="text"></input>
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/idea.css">
+</head>
+
+<body>
+    <div class="container">
+
+
+        <h1 th:text="${idea.textIdea}"></h1>
+        <div class="information">
+            <h2 th:text="'Creado por: ' + ${idea.user.getName()}"></h2>
+            <a href="/ideas">Volver</a>
+        </div>
+
+        <h3>Usuarios que le dieron like a tu idea</h3>
+        <table class="" id="">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="like : ${idea.likes}">
+                    <td th:text="${like.getUser().getName()}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/ideas/{id}/edit(id=${idea.id})}" class="edit_idea">Editar</a>
+    </div>
+</body>
+
+</html>

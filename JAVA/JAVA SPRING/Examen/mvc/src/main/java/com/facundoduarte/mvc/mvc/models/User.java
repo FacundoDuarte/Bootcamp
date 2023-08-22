@@ -1,4 +1,4 @@
-package com.facundoduarte.authentication.authentication.models;
+package com.facundoduarte.mvc.mvc.models;
 
 import java.util.Date;
 
@@ -7,24 +7,26 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    // NUEVO
-    @Email(message = "Email must be valid")
+    @NotBlank(message = "Debes ingresar un nombre")
+    private String firstName;
+    @NotBlank(message = "Debes ingresar un apellido")
+    private String lastName;
+    @NotBlank(message = "El correo es obligatorio")
+    @Email
     private String email;
-    // NUEVO
-    @Size(min = 5, message = "Password must be greater than 5 characters")
+    @Size(min = 5, message = "La contraseña debe tener 5 caracteres como minimo")
     private String password;
     @Transient
     private String passwordConfirmation;
@@ -35,7 +37,12 @@ public class User {
     public User() {
     }
 
-    public User(String email, String password) {
+    public User(String firstName,
+            String lastName,
+            String email,
+            String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
     }
@@ -46,6 +53,22 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -88,13 +111,4 @@ public class User {
         this.updatedAt = updatedAt;
     }
 
-    @PrePersist
-    protected void onCreate() {
-        this.createdAt = new Date();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        this.updatedAt = new Date();
-    }
 }
